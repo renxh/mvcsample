@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- configuration file for LogBack (slf4J implementation) See here for more 
+	details: http://gordondickens.com/wordpress/2013/03/27/sawing-through-the-java-loggers/ -->
+<configuration scan="true" scanPeriod="30 seconds">
+	<property name="loghome" value="d:\\work\\log\\sample" />
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
+
+	<!-- To enable JMX Management -->
+	<jmxConfigurator />
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{0} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="aplAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 编码 -->
+		<!-- <Encoding>UTF-8</Encoding> -->
+		<!-- 按照时间来 -->
+		<file>${loghome}/apl.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${loghome}/apl.%d{yyyy-MM-dd}.log</FileNamePattern>
+		</rollingPolicy>
+		<!-- 布局 -->
+		<encoder>
+			<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{0} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<!--<logger name="org.hibernate" level="debug"/> -->
+	<logger name="com.springmvc.sample" level="info" additivity="true">
+		<appender-ref ref="aplAppender" />
+	</logger>
+	<root level="info">
+		<appender-ref ref="console" />
+	</root>
+</configuration>
