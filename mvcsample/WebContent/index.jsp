@@ -2,7 +2,7 @@
 
 <html>
 
-<script type="text/javascript" src="js/common.js?v=1.0"></script>
+<script type="text/javascript" src="static/js/common.js?v=1.0"></script>
 <head>
 <title>Spring MVC Test</title>
 
