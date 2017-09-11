@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springmvc.sample.dao.EosDictEntryMapper">
+  <resultMap id="BaseResultMap" type="com.springmvc.sample.entity.EosDictEntry">
+    <id column="DICTTYPEID" jdbcType="VARCHAR" property="dicttypeid" />
+    <id column="DICTID" jdbcType="VARCHAR" property="dictid" />
+    <result column="DICTNAME" jdbcType="VARCHAR" property="dictname" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="SORTNO" jdbcType="INTEGER" property="sortno" />
+    <result column="RANK" jdbcType="INTEGER" property="rank" />
+    <result column="PARENTID" jdbcType="VARCHAR" property="parentid" />
+    <result column="SEQNO" jdbcType="VARCHAR" property="seqno" />
+    <result column="FILTER1" jdbcType="VARCHAR" property="filter1" />
+    <result column="FILTER2" jdbcType="VARCHAR" property="filter2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    DICTTYPEID, DICTID, DICTNAME, STATUS, SORTNO, RANK, PARENTID, SEQNO, FILTER1, FILTER2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.springmvc.sample.entity.EosDictEntryKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from EOS_DICT_ENTRY
+    where DICTTYPEID = #{dicttypeid,jdbcType=VARCHAR}
+      and DICTID = #{dictid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.springmvc.sample.entity.EosDictEntryKey">
+    delete from EOS_DICT_ENTRY
+    where DICTTYPEID = #{dicttypeid,jdbcType=VARCHAR}
+      and DICTID = #{dictid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.springmvc.sample.entity.EosDictEntry">
+    insert into EOS_DICT_ENTRY (DICTTYPEID, DICTID, DICTNAME, 
+      STATUS, SORTNO, RANK, 
+      PARENTID, SEQNO, FILTER1, 
+      FILTER2)
+    values (#{dicttypeid,jdbcType=VARCHAR}, #{dictid,jdbcType=VARCHAR}, #{dictname,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{sortno,jdbcType=INTEGER}, #{rank,jdbcType=INTEGER}, 
+      #{parentid,jdbcType=VARCHAR}, #{seqno,jdbcType=VARCHAR}, #{filter1,jdbcType=VARCHAR}, 
+      #{filter2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springmvc.sample.entity.EosDictEntry">
+    insert into EOS_DICT_ENTRY
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dicttypeid != null">
+        DICTTYPEID,
+      </if>
+      <if test="dictid != null">
+        DICTID,
+      </if>
+      <if test="dictname != null">
+        DICTNAME,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="sortno != null">
+        SORTNO,
+      </if>
+      <if test="rank != null">
+        RANK,
+      </if>
+      <if test="parentid != null">
+        PARENTID,
+      </if>
+      <if test="seqno != null">
+        SEQNO,
+      </if>
+      <if test="filter1 != null">
+        FILTER1,
+      </if>
+      <if test="filter2 != null">
+        FILTER2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dicttypeid != null">
+        #{dicttypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="dictid != null">
+        #{dictid,jdbcType=VARCHAR},
+      </if>
+      <if test="dictname != null">
+        #{dictname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sortno != null">
+        #{sortno,jdbcType=INTEGER},
+      </if>
+      <if test="rank != null">
+        #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="seqno != null">
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="filter1 != null">
+        #{filter1,jdbcType=VARCHAR},
+      </if>
+      <if test="filter2 != null">
+        #{filter2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springmvc.sample.entity.EosDictEntry">
+    update EOS_DICT_ENTRY
+    <set>
+      <if test="dictname != null">
+        DICTNAME = #{dictname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sortno != null">
+        SORTNO = #{sortno,jdbcType=INTEGER},
+      </if>
+      <if test="rank != null">
+        RANK = #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        PARENTID = #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="seqno != null">
+        SEQNO = #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="filter1 != null">
+        FILTER1 = #{filter1,jdbcType=VARCHAR},
+      </if>
+      <if test="filter2 != null">
+        FILTER2 = #{filter2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DICTTYPEID = #{dicttypeid,jdbcType=VARCHAR}
+      and DICTID = #{dictid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springmvc.sample.entity.EosDictEntry">
+    update EOS_DICT_ENTRY
+    set DICTNAME = #{dictname,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      SORTNO = #{sortno,jdbcType=INTEGER},
+      RANK = #{rank,jdbcType=INTEGER},
+      PARENTID = #{parentid,jdbcType=VARCHAR},
+      SEQNO = #{seqno,jdbcType=VARCHAR},
+      FILTER1 = #{filter1,jdbcType=VARCHAR},
+      FILTER2 = #{filter2,jdbcType=VARCHAR}
+    where DICTTYPEID = #{dicttypeid,jdbcType=VARCHAR}
+      and DICTID = #{dictid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.springmvc.sample.entity.EosDictEntry">
+    <id column="DICTTYPEID" jdbcType="VARCHAR" property="dicttypeid" />
+    <id column="DICTID" jdbcType="VARCHAR" property="dictid" />
+    <result column="DICTNAME" jdbcType="VARCHAR" property="dictname" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="SORTNO" jdbcType="INTEGER" property="sortno" />
+    <result column="RANK" jdbcType="INTEGER" property="rank" />
+    <result column="PARENTID" jdbcType="VARCHAR" property="parentid" />
+    <result column="SEQNO" jdbcType="VARCHAR" property="seqno" />
+    <result column="FILTER1" jdbcType="VARCHAR" property="filter1" />
+    <result column="FILTER2" jdbcType="VARCHAR" property="filter2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    DICTTYPEID, DICTID, DICTNAME, STATUS, SORTNO, RANK, PARENTID, SEQNO, FILTER1, FILTER2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.springmvc.sample.entity.EosDictEntryKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from EOS_DICT_ENTRY
+    where DICTTYPEID = #{dicttypeid,jdbcType=VARCHAR}
+      and DICTID = #{dictid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.springmvc.sample.entity.EosDictEntryKey">
+    delete from EOS_DICT_ENTRY
+    where DICTTYPEID = #{dicttypeid,jdbcType=VARCHAR}
+      and DICTID = #{dictid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.springmvc.sample.entity.EosDictEntry">
+    insert into EOS_DICT_ENTRY (DICTTYPEID, DICTID, DICTNAME, 
+      STATUS, SORTNO, RANK, 
+      PARENTID, SEQNO, FILTER1, 
+      FILTER2)
+    values (#{dicttypeid,jdbcType=VARCHAR}, #{dictid,jdbcType=VARCHAR}, #{dictname,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{sortno,jdbcType=INTEGER}, #{rank,jdbcType=INTEGER}, 
+      #{parentid,jdbcType=VARCHAR}, #{seqno,jdbcType=VARCHAR}, #{filter1,jdbcType=VARCHAR}, 
+      #{filter2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springmvc.sample.entity.EosDictEntry">
+    insert into EOS_DICT_ENTRY
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dicttypeid != null">
+        DICTTYPEID,
+      </if>
+      <if test="dictid != null">
+        DICTID,
+      </if>
+      <if test="dictname != null">
+        DICTNAME,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="sortno != null">
+        SORTNO,
+      </if>
+      <if test="rank != null">
+        RANK,
+      </if>
+      <if test="parentid != null">
+        PARENTID,
+      </if>
+      <if test="seqno != null">
+        SEQNO,
+      </if>
+      <if test="filter1 != null">
+        FILTER1,
+      </if>
+      <if test="filter2 != null">
+        FILTER2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dicttypeid != null">
+        #{dicttypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="dictid != null">
+        #{dictid,jdbcType=VARCHAR},
+      </if>
+      <if test="dictname != null">
+        #{dictname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sortno != null">
+        #{sortno,jdbcType=INTEGER},
+      </if>
+      <if test="rank != null">
+        #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="seqno != null">
+        #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="filter1 != null">
+        #{filter1,jdbcType=VARCHAR},
+      </if>
+      <if test="filter2 != null">
+        #{filter2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springmvc.sample.entity.EosDictEntry">
+    update EOS_DICT_ENTRY
+    <set>
+      <if test="dictname != null">
+        DICTNAME = #{dictname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sortno != null">
+        SORTNO = #{sortno,jdbcType=INTEGER},
+      </if>
+      <if test="rank != null">
+        RANK = #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        PARENTID = #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="seqno != null">
+        SEQNO = #{seqno,jdbcType=VARCHAR},
+      </if>
+      <if test="filter1 != null">
+        FILTER1 = #{filter1,jdbcType=VARCHAR},
+      </if>
+      <if test="filter2 != null">
+        FILTER2 = #{filter2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DICTTYPEID = #{dicttypeid,jdbcType=VARCHAR}
+      and DICTID = #{dictid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springmvc.sample.entity.EosDictEntry">
+    update EOS_DICT_ENTRY
+    set DICTNAME = #{dictname,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      SORTNO = #{sortno,jdbcType=INTEGER},
+      RANK = #{rank,jdbcType=INTEGER},
+      PARENTID = #{parentid,jdbcType=VARCHAR},
+      SEQNO = #{seqno,jdbcType=VARCHAR},
+      FILTER1 = #{filter1,jdbcType=VARCHAR},
+      FILTER2 = #{filter2,jdbcType=VARCHAR}
+    where DICTTYPEID = #{dicttypeid,jdbcType=VARCHAR}
+      and DICTID = #{dictid,jdbcType=VARCHAR}
+  </update>
+</mapper>
