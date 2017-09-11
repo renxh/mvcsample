@@ -12,6 +12,6 @@
 
 </body>
 <script type="text/javascript">
-prompt();
+//prompt();
 </script>
 </html>
