@@ -24,4 +24,8 @@ public class JobController {
 		}
 		logger.info("batchTask12");
 	}
+
+	public void batchQuartz1() {
+		logger.info("batchQuartz1");
+	}
 }
